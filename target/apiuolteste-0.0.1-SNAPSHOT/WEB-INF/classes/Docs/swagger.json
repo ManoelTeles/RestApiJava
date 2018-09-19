@@ -1,0 +1,83 @@
+{
+  "openapi" : "3.0.0",
+  "info" : {
+    "description" : "Verifica se cliente pode ter atendimento especializado.",
+    "version" : "2.0.0",
+    "title" : "ValidaVip",
+    "contact" : {
+      "name" : "Manoel Teles",
+      "email" : "manoel.teles@informationsys.com"
+    }
+  },
+  "servers" : [ {
+    "url" : "http://crmgenws.sys.srv.intranet/customers",
+    "description" : "Prod Server"
+  }, {
+    "url" : "https://teste/",
+    "description" : "backup Server"
+  } ],
+  "paths" : {
+    "/segmentation" : {
+      "get" : {
+        "description" : "Traz o Id, Idtype, e Segmentação do cliente",
+        "parameters" : [ {
+          "name" : "person",
+          "in" : "query",
+          "required" : true,
+          "description" : "O IdtPerson do cliente",
+          "schema" : {
+            "type" : "integer",
+            "example" : 143280226
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "items" : {
+                    "$ref" : "#/components/schemas/segmentation"
+                  }
+                }
+              },
+              "application/xml" : {
+                "schema" : {
+                  "type" : "object",
+                  "items" : {
+                    "$ref" : "#/components/schemas/segmentation"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "segmentation" : {
+        "description" : "Modelo de dados",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "description" : "id do cliente",
+            "example" : 0
+          },
+          "idtype" : {
+            "type" : "string",
+            "description" : "idtype do cliente",
+            "example" : 1
+          },
+          "segmentation" : {
+            "type" : "string",
+            "description" : "Segmentação do cliente",
+            "example" : "Cliente"
+          }
+        }
+      }
+    }
+  }
+}

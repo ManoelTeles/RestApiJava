@@ -1,0 +1,103 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "API Rest Todos",
+    "description": "Barramento de serviços para sistemas",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Manoel Teles",
+      "url": "https://github.com/ManoelTeles/RestApiJava"
+    }
+  },
+  "host": "localhost:8080",
+  "schemes": [
+    "http"
+  ],
+  "basePath": "/APITeste",
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/segmentation/DispServManoel": {
+      "get": {
+        "tags": [
+          "Segmentation"
+        ],
+        "summary": "Costumer authentication",
+        "description": "Valida se o usuario tem permissao para acessar os serviços",
+        "parameters": [
+          {
+            "name": "x",
+            "in": "query",
+            "description": "Usuário para autenticação e obter acesso ao serviço.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Usuario autenticado com sucesso."
+          },
+          "203": {
+            "description": "Usuário não autenticado e/ou sem permissão de acesso."
+          },
+          "400": {
+            "description": "Parametro obrigatorio nao informado."
+          },
+          "401": {
+            "description": "Sem conexao com Banco de Dados."
+          }
+        }
+      }
+    },
+    "/segmentation/Todos": {
+      "get": {
+        "tags": [
+          "Segmentation"
+        ],
+        "summary": "Costumer authentication",
+        "description": "Consulta o servico.",
+        "parameters": [
+          {
+            "name": "x",
+            "in": "query",
+            "description": "Usuário para autenticação e obter acesso ao serviço.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Usuario autenticado com sucesso."
+          },
+          "203": {
+            "description": "Usuário não autenticado e/ou sem permissão de acesso."
+          },
+          "400": {
+            "description": "Parametro obrigatorio nao informado."
+          },
+          "401": {
+            "description": "Sem conexao com Banco de Dados."
+          }
+        }
+      }
+    },
+    "/info": {
+      "get": {
+        "tags": [
+          "System"
+        ],
+        "summary": "API Definition",
+        "description": "Retorna um json com a descrição da API, seguindo o padrão OpenAPI v2.\n",
+        "responses": {
+          "200": {
+            "description": "JSON com a descrição da API",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    }
+  }
+}
